@@ -10,29 +10,55 @@ redirect();
 @endguest
 @section('content')
 
-<form method="POST" action="/createemployee">
-    <fieldset>
+<div class="container">
 
-    @csrf
+<h2>Add Employee</h2>
 
-    <label for="firstname">First name: </label>
-    <input type="text" name="firstname" id="firstname" required>
+    <form method="POST" action="/createemployee" class="border p-4">
+        <fieldset>
 
-    <label for="lastname">Last name: </label>
-    <input type="text" name="lastname" id="lastname" required>
+            @csrf
 
-    <label for="company">Company: </label>
-    <input type="text" name="company" id="company">
+            <div class="mb-3">
+                <label for="first_name">First name: </label>
+                <input type="text" class="form-control" name="first_name" id="first_name" required>
+            </div>
 
-    <label for="email">Email address: </label>
-    <input type="text" name="email" id="email">
+            <div class="mb-3">
+                <label for="last_name">Last name: </label>
+                <input type="text" class="form-control" name="last_name" id="last_name" required>
+            </div>
 
-    <label for="phoneno">Phone number: </label>
-    <input type="text" name="phoneno" id="phoneno">
+            <div class="mb-3">
+                <label for="company">Company: </label>
+                <input type="text" class="form-control" name="company" id="company">
+            </div>
 
-    <input type="submit" value="Add employee">
-        
-    </fieldset>
+            <div class="mb-3">
+                <label for="email">Email address: </label>
+                <input type="text" class="form-control" name="email" id="email">
+            </div>
 
-</form>
+            <div class="mb-3">
+                <label for="phone_no">Phone number: </label>
+                <input type="text" class="form-control" name="phone_no" id="phone_no">
+            </div>
+
+            <input type="submit" class="btn btn-secondary" value="Add employee">
+            
+        </fieldset>
+
+    </form>
+
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+</div>
 @endsection

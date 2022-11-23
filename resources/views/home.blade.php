@@ -17,12 +17,27 @@
         
                     @if (auth::user()->name)
 
-                        {{ 'Hello!' }}
-                        <div>
-                            <a href="/companies">Companies</a>
-                            <a href="/employees">Employees</a>
-                            <a href="/createcompany">Add a company</a>
-                            <a href="/createemployee">Add an employee</a>
+                        {{ 'Welcome!' }}
+                        <div class="text-center">
+                            <div class="row">
+
+                                <div class="col">
+                                    <a href="/companies">Companies</a>
+                                </div>
+
+                                <div class="col">
+                                    <a href="/employees">Employees</a>
+                                </div>
+
+                                <div class="col">
+                                    <a href="/createcompany">Add a company</a>
+                                </div>
+
+                                <div class="col">
+                                    <a href="/createemployee">Add an employee</a>
+                                </div>
+                                
+                            </div>
                         </div>
                     @endif
                     @guest

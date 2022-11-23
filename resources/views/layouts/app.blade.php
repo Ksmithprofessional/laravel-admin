@@ -18,6 +18,27 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .companies-table > tr {
+            height: 117px;
+        }
+
+        .companies-table > tr > td {
+
+            padding-top: 2.5rem;
+        }
+
+        .companies-table > tr > td:nth-child(3) {
+
+            padding-top: 0.5rem;
+        }
+
+        .companies-table > tr > td:nth-child(5),
+        .companies-table > tr > td:nth-child(6) {
+
+            padding-top: 2.3rem;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -58,6 +79,23 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item" href="/companies">
+                                        View all Companies
+                                    </a>
+
+                                    <a class="dropdown-item" href="/createcompany">
+                                        Add Company
+                                    </a>
+
+                                    <a class="dropdown-item" href="/employees">
+                                        View all Employees
+                                    </a>
+
+                                    <a class="dropdown-item" href="/createemployee">
+                                        Add Employees
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
