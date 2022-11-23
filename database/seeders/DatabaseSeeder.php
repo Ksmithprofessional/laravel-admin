@@ -23,9 +23,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('companies')->insert([
-            'name' => 'Jimbos funhouse',
-            'email' => 'jimbo@jimbo.com',
-            'logo' => '807006.jpg'
+            'name' => 'Wordpress',
+            'email' => 'wordpress@probablywordpress.com',
+            'logo' => 'public/JEE4cngEBa1zmNzq9UBOTJL4AaTpmBO7zx8cOX1i.png',
+            'website' => 'http://itwastheonlylogoihadonmycomputer.com'
+
+        ]);
+
+        DB::table('employees')->insert([
+            'first_name' => 'Jim',
+            'last_name' => 'Jimothan',
+            'company' => 'The jim emporium',
+            'email' => 'jim@jim.com',
+            'phone_no' => '01592573855'
 
         ]);
     }
