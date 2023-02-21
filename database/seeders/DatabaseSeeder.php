@@ -33,7 +33,8 @@ class DatabaseSeeder extends Seeder
         DB::table('employees')->insert([
             'first_name' => 'Jim',
             'last_name' => 'Jimothan',
-            'company' => 'The jim emporium',
+            'company_id' => 1,
+            'company' => 'Wordpress',
             'email' => 'jim@jim.com',
             'phone_no' => '01592573855'
 

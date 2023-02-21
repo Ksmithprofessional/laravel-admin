@@ -28,16 +28,19 @@ redirect();
             <div class="mb-3">
                 <label for="email">Email address: </label>
                 <input type="text" class="form-control" name="email" id="email" value="{{ old('email') }}" >
+                <p>(eg. email@email.com)</p>
             </div>
 
             <div class="mb-3">
                 <label for="logo">Company logo: </label>
                 <input type="file" class="form-control" name="logo" id="logo" value="{{ old('logo') }}" >
+                <p>100 x 100 image files</p>
             </div>
 
             <div class="mb-3">
                 <label for="website">Website address: </label>
                 <input type="text" class="form-control" name="website" id="website" value="{{ old('website') }}" >
+                <p>(eg. http://www.yourwebsite.com)</p>
             </div>
 
             <input type="submit" class="btn btn-secondary" value="Add company">

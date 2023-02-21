@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\companies;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\StoreCompany;
 
 class CompaniesController extends Controller
 {
@@ -21,17 +22,21 @@ class CompaniesController extends Controller
         return view('createcompany');
     }
 
-    public function store(companies $company)
+    public function store(companies $company, StoreCompany $request)
     {
+
+        $validated = $request->validated();
+
+        // ddd($validated);
 
         if(request('logo') == null) {
 
-            companies::insert([$this->companyRules()]);
+            companies::insert([$validated]);
 
         } else {
 
             companies::insert([
-                array_merge($this->companyRules(), [
+                array_merge($validated, [
                     'logo' => request()->file('logo')->store('public')
                 ]
             )]);
@@ -43,7 +48,7 @@ class CompaniesController extends Controller
         //     'website' => request()->input('website')
         // ]);
 
-        return redirect('/companies');
+        return redirect()->route('companies');
     }
 
     public function edit()
@@ -53,15 +58,17 @@ class CompaniesController extends Controller
         ]);
     }
 
-    public function update(companies $company){
+    public function update(companies $company, StoreCompany $request){
 
+
+        $validated = $request->validated();
         if(request('logo') == null) {
 
-            $attributes = $this->companyRules();
+            $attributes = $validated;
 
         } else {
-
-            $attributes = array_merge($this->companyRules(), [
+            // ddd($validated);
+            $attributes = array_merge($validated, [
                     'logo' => request()->file('logo')->store('public')
                 ]
             );
@@ -77,25 +84,28 @@ class CompaniesController extends Controller
         //     'website' => request()->input('website')
         // ]);
 
-        return redirect('/companies');
+        return redirect()->route('companies');
 
     }
 
     public function destroy()
     {
 
+        // $companyName = DB::table('companies')->select('name')->where('id', request('id'));
+        // ddd($companyName);
         $company = companies::where('id', request('id'))->firstorfail()->delete();
+        // DB::table('employees')->where('company', request('name'))->delete();
 
-        return redirect('/companies');
+        return redirect()->route('companies');
     }
 
-    protected function companyRules()
-    {
-        return request()->validate([
-            'name' => 'required|max:255',
-            'email' => 'nullable|email',
-            'logo' => 'nullable|image|dimensions:min_width=100,min_height=100',
-            'website' => 'nullable|url'
-        ]);
-    }
+    // protected function companyRules()
+    // {
+    //     return request()->validate([
+    //         'name' => 'required|max:255',
+    //         'email' => 'nullable|email',
+    //         'logo' => 'nullable|image|dimensions:min_width=100,min_height=100',
+    //         'website' => 'nullable|url'
+    //     ]);
+    // }
 }
